@@ -63,27 +63,21 @@ public class FuraffinityRipper extends AbstractHTMLRipper {
     }
     @Override
     public Document getFirstPage() throws IOException {
-        logger.info(Http.url(url).cookies(cookies).get());
-
         return Http.url(url).cookies(cookies).get();
     }
 
     @Override
     public Document getNextPage(Document doc) throws IOException {
         // Find next page
-        Elements nextPageUrl = doc.select("td[align=right] form");
+        Elements nextPageUrl = doc.select("a.right");
         if (nextPageUrl.size() == 0) {
             throw new IOException("No more pages");
         }
-        String nextUrl = urlBase + nextPageUrl.first().attr("action");
+        String nextUrl = urlBase + nextPageUrl.first().attr("href");
 
         sleep(500);
         Document nextPage = Http.url(nextUrl).cookies(cookies).get();
 
-        Elements hrefs = nextPage.select("div#no-images");
-        if (hrefs.size() != 0) {
-            throw new IOException("No more pages");
-        }
         return nextPage;
     }
 
