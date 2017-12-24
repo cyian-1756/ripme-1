@@ -28,8 +28,12 @@ import com.rarchives.ripme.utils.Http;
 
 public class FuraffinityRipper extends AbstractHTMLRipper {
 
-    private static Map<String, String> cookies=null;
     private static final String urlBase = "https://www.furaffinity.net";
+    private static Map<String,String> cookies = new HashMap<>();
+    static {
+        cookies.put("b", "bd5ccac8-51dc-4265-8ae1-7eac685ad667");
+        cookies.put("a", "7c41b782-d01d-4b0e-b45b-62a4f0b2a369");
+    }
 
     // Thread pool for finding direct image links from "image" pages (html)
     private DownloadThreadPool furaffinityThreadPool
@@ -59,32 +63,9 @@ public class FuraffinityRipper extends AbstractHTMLRipper {
     }
     @Override
     public Document getFirstPage() throws IOException {
+        logger.info(Http.url(url).cookies(cookies).get());
 
-        return Http.url(url).get();
-    }
-
-    private void login() throws IOException {
-        String user = new String(Base64.decode("cmlwbWU="));
-        String pass = new String(Base64.decode("cmlwbWVwYXNzd29yZA=="));
-
-        Response loginPage = Http.url(urlBase + "/login/")
-                                 .referrer(urlBase)
-                                 .response();
-        cookies = loginPage.cookies();
-
-        Map<String,String> formData = new HashMap<>();
-        formData.put("action", "login");
-        formData.put("retard_protection", "1");
-        formData.put("name", user);
-        formData.put("pass", pass);
-        formData.put("login", "Login toÂ FurAffinity");
-
-        Response doLogin = Http.url(urlBase + "/login/?ref=" + url)
-                               .referrer(urlBase + "/login/")
-                               .data(formData)
-                               .method(Method.POST)
-                               .response();
-        cookies.putAll(doLogin.cookies());
+        return Http.url(url).cookies(cookies).get();
     }
 
     @Override
@@ -97,7 +78,7 @@ public class FuraffinityRipper extends AbstractHTMLRipper {
         String nextUrl = urlBase + nextPageUrl.first().attr("action");
 
         sleep(500);
-        Document nextPage = Http.url(nextUrl).get();
+        Document nextPage = Http.url(nextUrl).cookies(cookies).get();
 
         Elements hrefs = nextPage.select("div#no-images");
         if (hrefs.size() != 0) {
@@ -108,8 +89,8 @@ public class FuraffinityRipper extends AbstractHTMLRipper {
 
     private String getImageFromPost(String url) {
         try {
-            logger.info("found url " + Http.url(url).get().select("meta[property=og:image]").attr("content"));
-            return Http.url(url).get().select("meta[property=og:image]").attr("content");
+            logger.info("found url " + Http.url(url).cookies(cookies).get().select("meta[property=og:image]").attr("content"));
+            return Http.url(url).cookies(cookies).get().select("meta[property=og:image]").attr("content");
         } catch (IOException e) {
             return "";
         }
