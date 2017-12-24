@@ -37,7 +37,7 @@ public class FuraffinityRipper extends AbstractHTMLRipper {
 
     // Thread pool for finding direct image links from "image" pages (html)
     private DownloadThreadPool furaffinityThreadPool
-                               = new DownloadThreadPool( "furaffinity");
+            = new DownloadThreadPool( "furaffinity");
 
     @Override
     public DownloadThreadPool getThreadPool() {
@@ -144,8 +144,8 @@ public class FuraffinityRipper extends AbstractHTMLRipper {
     }
     @Override
     public boolean saveText(URL url, String subdirectory, String text, int index) {
-       //TODO Make this better please?
-       try {
+        //TODO Make this better please?
+        try {
             stopCheck();
         } catch (IOException e) {
             return false;
@@ -156,7 +156,7 @@ public class FuraffinityRipper extends AbstractHTMLRipper {
         saveAs = text.split("\n")[0];
         saveAs = saveAs.replaceAll("^(\\S+)\\s+by\\s+(.*)$", "$2_$1");
         for (int i = 1;i < text.split("\n").length; i++) {
-             newText = newText.replace("\\","").replace("/","").replace("~","") + "\n" + text.split("\n")[i];
+            newText = newText.replace("\\","").replace("/","").replace("~","") + "\n" + text.split("\n")[i];
         }
         try {
             if (!subdirectory.equals("")) {
