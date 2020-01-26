@@ -1,10 +1,10 @@
 package com.rarchives.ripme.tst.ripper.rippers;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import com.rarchives.ripme.ripper.rippers.ChanRipper;
@@ -46,11 +46,11 @@ public class ChanRipperTest extends RippersTest {
     }
     @Test
     public void testChanStringParsing() throws IOException {
-        List<String> site1 = Arrays.asList("site1.com");
+        List<String> site1 = Collections.singletonList("site1.com");
         List<String> site1Cdns = Arrays.asList("cnd1.site1.com", "cdn2.site2.biz");
 
-        List<String> site2 = Arrays.asList("site2.co.uk");
-        List<String> site2Cdns = Arrays.asList("cdn.site2.co.uk");
+        List<String> site2 = Collections.singletonList("site2.co.uk");
+        List<String> site2Cdns = Collections.singletonList("cdn.site2.co.uk");
         ChanRipper ripper = new ChanRipper(new URL("http://desuchan.net/v/res/7034.html"));
         List<ChanSite> chansFromConfig = ripper
                 .getChansFromConfig("site1.com[cnd1.site1.com|cdn2.site2.biz],site2.co.uk[cdn.site2.co.uk]");

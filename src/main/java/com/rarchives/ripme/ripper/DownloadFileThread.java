@@ -8,11 +8,9 @@ import java.net.URLConnection;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ResourceBundle;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import com.rarchives.ripme.ui.MainWindow;
 import org.apache.log4j.Logger;
 import org.jsoup.HttpStatusException;
 

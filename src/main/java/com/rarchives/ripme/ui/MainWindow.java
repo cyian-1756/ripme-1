@@ -506,7 +506,6 @@ public final class MainWindow implements Runnable, RipStatusHandler {
         configurationPanel = new JPanel(new GridBagLayout());
         configurationPanel.setBorder(emptyBorder);
         configurationPanel.setVisible(false);
-        // TODO Configuration components
         configUpdateButton = new JButton(Utils.getLocalizedString("check.for.updates"));
         configUpdateLabel = new JLabel(
                 Utils.getLocalizedString("current.version") + ": " + UpdateUtils.getThisJarVersion(), JLabel.RIGHT);

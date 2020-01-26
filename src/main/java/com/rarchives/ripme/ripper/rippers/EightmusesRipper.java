@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.rarchives.ripme.utils.Utils;
 import org.json.JSONObject;
 import org.jsoup.Connection.Response;
 import org.jsoup.nodes.Document;

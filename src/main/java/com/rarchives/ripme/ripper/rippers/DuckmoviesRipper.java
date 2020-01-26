@@ -5,7 +5,6 @@ import com.rarchives.ripme.ripper.AbstractSingleFileRipper;
 import com.rarchives.ripme.utils.Http;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.net.MalformedURLException;

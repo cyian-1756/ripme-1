@@ -224,12 +224,11 @@ public abstract class AlbumRipper extends AbstractRipper {
      */
     @Override
     public String getStatusText() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getCompletionPercentage())
-          .append("% ")
-          .append("- Pending: "  ).append(itemsPending.size())
-          .append(", Completed: ").append(itemsCompleted.size())
-          .append(", Errored: "  ).append(itemsErrored.size());
-        return sb.toString();
+        String sb = String.valueOf(getCompletionPercentage()) +
+                "% " +
+                "- Pending: " + itemsPending.size() +
+                ", Completed: " + itemsCompleted.size() +
+                ", Errored: " + itemsErrored.size();
+        return sb;
     }
 }

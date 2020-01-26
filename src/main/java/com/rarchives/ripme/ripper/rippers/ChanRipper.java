@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -84,7 +85,7 @@ public class ChanRipper extends AbstractHTMLRipper {
             }
         }
         if (chanSite == null) {
-            chanSite = new ChanSite(Arrays.asList(url.getHost()));
+            chanSite = new ChanSite(Collections.singletonList(url.getHost()));
         }
     }
 

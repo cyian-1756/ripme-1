@@ -1,6 +1,7 @@
 package com.rarchives.ripme.ripper.rippers.ripperhelpers;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class ChanSite {
@@ -27,7 +28,7 @@ public class ChanSite {
         if (CdnDomains.isEmpty()) {
             throw new IllegalArgumentException("CdnDomains");
         }
-        domains = Arrays.asList(Domain);
+        domains = Collections.singletonList(Domain);
         cdnDomains = CdnDomains;
     }
 
@@ -38,16 +39,16 @@ public class ChanSite {
         if (CdnDomain.isEmpty()) {
             throw new IllegalArgumentException("CdnDomains");
         }
-        domains = Arrays.asList(Domain);
-        cdnDomains = Arrays.asList(CdnDomain);
+        domains = Collections.singletonList(Domain);
+        cdnDomains = Collections.singletonList(CdnDomain);
     }
 
     public ChanSite(String Domain) {
         if (Domain.isEmpty()) {
             throw new IllegalArgumentException("Domains");
         }
-        domains = Arrays.asList(Domain);
-        cdnDomains = Arrays.asList(Domain);
+        domains = Collections.singletonList(Domain);
+        cdnDomains = Collections.singletonList(Domain);
     }
 
     public ChanSite(List<String> Domains) {

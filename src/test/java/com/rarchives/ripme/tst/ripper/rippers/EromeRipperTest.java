@@ -1,7 +1,6 @@
 package com.rarchives.ripme.tst.ripper.rippers;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import com.rarchives.ripme.ripper.rippers.EromeRipper;

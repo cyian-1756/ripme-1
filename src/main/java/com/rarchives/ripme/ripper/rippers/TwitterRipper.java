@@ -119,19 +119,18 @@ public class TwitterRipper extends AbstractJSONRipper {
         StringBuilder req = new StringBuilder();
         switch (albumType) {
         case ACCOUNT:
-            req.append("https://api.twitter.com/1.1/statuses/user_timeline.json")
-                    .append("?screen_name=" + this.accountName).append("&include_entities=true")
-                    .append("&exclude_replies=true").append("&trim_user=true").append("&count=" + MAX_ITEMS_REQUEST)
+            req.append("https://api.twitter.com/1.1/statuses/user_timeline.json").append("?screen_name=").append(this.accountName).append("&include_entities=true")
+                    .append("&exclude_replies=true").append("&trim_user=true").append("&count=").append(MAX_ITEMS_REQUEST)
                     .append("&tweet_mode=extended");
             break;
         case SEARCH:// Only get tweets from last week
-            req.append("https://api.twitter.com/1.1/search/tweets.json").append("?q=" + this.searchText)
+            req.append("https://api.twitter.com/1.1/search/tweets.json").append("?q=").append(this.searchText)
                     .append("&include_entities=true").append("&result_type=recent").append("&count=100")
                     .append("&tweet_mode=extended");
             break;
         }
         if (maxID > 0) {
-            req.append("&max_id=" + Long.toString(maxID));
+            req.append("&max_id=").append(Long.toString(maxID));
         }
         return req.toString();
     }
