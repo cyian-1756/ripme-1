@@ -156,7 +156,6 @@ public class EightmusesRipper extends AbstractHTMLRipper {
         title = title.replaceAll("\\| ", "");
         title = title.replace(" - ", "-");
         title = title.replace(" ", "-");
-        LOGGER.info(title);
         return title;
     }
 
